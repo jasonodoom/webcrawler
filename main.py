@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 from urllib.request import urlopen 
 from lxml import etree
 from lxml import html
@@ -12,6 +13,7 @@ in the webpage, it will write to disk. Recommended use with Wikipedia.'''
     seedTwo= input("\nPlease enter the second seed URL: \n")
     print("You entered:\n " +  seedTwo)
     keywords=input("\nPlease enter keywords related to your link: ")
+    print('\nPlease sit tight, this will take a while to process......')
     dictionary = keywords.split()
     htmlOne  = urlopen(seedOne).read()
     htmlTwo = urlopen(seedTwo).read()
@@ -29,12 +31,13 @@ in the webpage, it will write to disk. Recommended use with Wikipedia.'''
         for x in treeTwo.iterfind(".//a"):
             seedList.append(seedTwo)
             seedList.append((x.get("href")))
-            #print(seedList)
-            for word in keywords:
-                if word in seedList:
-                    with open("1.html", "w+") as f:
-                        f.write(word)
-                        print(word)
+            with open("1.html", "w+") as f:
+                f.write((repr(seedList )))
+                for word in f:
+                    if word in keywords:
+                        dictionary.append(word)
+                        print(dictionary) 
+                
                         
                         
                             
