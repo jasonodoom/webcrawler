@@ -30,7 +30,7 @@ in the webpage, it will write to disk. Recommended use with Wikipedia.'''
             for i, line in enumerate(seedList):
                 with open("1_%i.html" %i, "a+") as f: #writing to multiple files that are created instantly with this naming scheme . 
                     f.write((repr(seedList )))
-                    if i >= 50: #Stops creating files at this number.
+                    if i >= 500: #Stops creating files at this number.
                         break
                     for word in f:
                         if word in keywords:
