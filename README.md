@@ -1,7 +1,7 @@
 # webcrawler
 A web crawler for my IS392: Web Mining and Information Retrieval class.
 
-This will program is only compatible with Python 3.
+This program is only compatible with Python 3.
 
 Please grab the needed dependency before running the program by issuing: 
 ```
