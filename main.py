@@ -17,11 +17,6 @@ in the webpage, it will write to disk. Recommended use with Wikipedia.'''
     dictionary = keywords.split()
     htmlOne  = urlopen(seedOne).read()
     htmlTwo = urlopen(seedTwo).read()
-    #limitOne= htmlOne.read(5000) #Close the connection after 5000 bytes
-    #limitTwo=htmlTwo.read(5000)
-    #limitOne.close()
-    #limitTwo.close()
-
     treeOne = etree.fromstring(htmlOne) # Parse the HTML
     treeTwo = etree.fromstring(htmlTwo)
     seedList=[]
@@ -31,16 +26,17 @@ in the webpage, it will write to disk. Recommended use with Wikipedia.'''
         for x in treeTwo.iterfind(".//a"):
             seedList.append(seedTwo)
             seedList.append((x.get("href")))
-            with open("1.html", "w+") as f:
-                f.write((repr(seedList )))
-                for word in f:
-                    if word in keywords:
-                        dictionary.append(word)
-                        print(dictionary) 
-                
-                        
-                        
+            filew = open("1.html", "a+")
+            for i, line in enumerate(seedList):
+                with open("1_%i.html" %i, "a+") as f: #writing to multiple files that are created instantly with this naming scheme . 
+                    f.write((repr(seedList )))
+                    if i >= 50: #Stops creating files at this number.
+                        break
+                    for word in f:
+                        if word in keywords:
+                            dictionary.append(word)
                             
+                                                 
             
 print(crawl())
  
